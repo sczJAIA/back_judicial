@@ -82,7 +82,7 @@ const updateUser = async(req, res) => {
     return;
   }
   const passwordHash = await encrypt(body.password); 
-  const updateUser = {
+  const updatedUser = {
     username: body.username,
     password: passwordHash,
     role: body.role,
@@ -91,7 +91,7 @@ const updateUser = async(req, res) => {
   };
   try {
     const connection = await getConnection();
-    await connection.query('update users set ? where id_user = ?', [updateUser, req.params.userId]);
+    await connection.query('update users set ? where id_user = ?', [updatedUser, req.params.userId]);
     res.json({message: 'User updated'});
     return;
   } catch (error) {
