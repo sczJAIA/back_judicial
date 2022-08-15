@@ -4,10 +4,12 @@ import v1UserRouter from './v1/routes/usersRoutes';
 import v1BusinessRouter from './v1/routes/businessRoutes';
 import v1AuthRouter from './v1/routes/authRoutes';
 import v1VariableListRouter from './v1/routes/variableListRoutes';
+import cors from 'cors';
+
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-
+app.use(cors());
 app.use(morgan('dev'));
 app.use(express.json());
 app.use('/api/v1/auth', v1AuthRouter);
